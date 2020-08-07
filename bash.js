@@ -1,3 +1,5 @@
+const pwd = require('./pwd.js');
+
 process.stdout.write('prompt > ');
 process.stdin.on('data', (data) =>{
   const cmd = data
@@ -5,20 +7,15 @@ process.stdin.on('data', (data) =>{
   .trim();
 
   if (cmd === 'pwd'){
-    console.log(require('./pwd.js')())
+    const pwd = require('./pwd.js')()
+    pwd()
   }
-  const fs = require('fs');
-  console.log(fs.readdir('./', 'utf8', (err, files) => {
-    if (err) {
-      throw err
-    } else {
-      process.stdout.write(files.join('\n'))
-      process.stdout.write("prompt >")
-    }
-  }))
+  if (cmd === 'ls'){
+    const ls = require('./ls.js');
+    ls()
+  }
 
-
-  process.stdout.write('You typed: ' + cmd);
-  process.stdout.write('\nprompt > ')
+  // process.stdout.write('You typed: ' + cmd);
+  // process.stdout.write('\nprompt > ')
 
 })
