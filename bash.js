@@ -19,12 +19,7 @@ process.stdin.on('data', (data) =>{
 
   }
   if (cmd.slice(0,4) === 'curl'){
-    // require('./curl.js')(cmd.slice(5))
-    request(cmd.slice(5), function (error, response, body) {
-      console.error('error:', error); // Print the error if one occurred
-      console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-      console.log('body:', body); // Print the HTML for the Google homepage.
-    });
+    require('./curl.js')(cmd.slice(5))
   }
    else {
 
