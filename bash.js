@@ -1,5 +1,23 @@
+const done = (output) => {
+  console.log(output)
+  process.stdout.write('prompt > ');
+}
+
+
+
+
+
+
+
+
 process.stdout.write('prompt > ');
 const request = require('request')
+
+
+
+
+
+
 process.stdin.on('data', (data) =>{
   const cmd = data
   .toString()
@@ -8,20 +26,20 @@ process.stdin.on('data', (data) =>{
   const fs = require('fs')
 
   if (cmd === 'pwd'){
-    require('./pwd.js')();
+    require('./pwd.js')(done);
   }
-  if (cmd === 'ls'){
-    require('./ls.js')();
+  else if (cmd === 'ls'){
+    require('./ls.js')(done);
 
   }
-  if (cmd.slice(0, 3) === 'cat') {
-    require('./cat.js')(cmd.slice(4));
+  else if (cmd.slice(0, 3) === 'cat') {
+    require('./cat.js')(done, cmd.slice(4));
 
   }
-  if (cmd.slice(0,4) === 'curl'){
-    require('./curl.js')(cmd.slice(5))
+  else if (cmd.slice(0,4) === 'curl'){
+    require('./curl.js')(done, cmd.slice(5))
   }
-   else {
+  else {
 
     process.stdout.write('\nprompt > ')
   }

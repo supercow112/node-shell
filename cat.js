@@ -1,12 +1,10 @@
-
-
 const fs = require('fs')
-module.exports = (filename) => {
-  return fs.readFile(filename, 'utf8', (err, data) => {
+module.exports = (done, filename) => {
+  fs.readFile(filename, 'utf8', (err, data) => {
     if (err) {
-      throw err;
+      done('Something went wrong!')
     } else {
-      console.log(data)
+      done(data)
     }
   })
 }

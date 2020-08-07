@@ -1,12 +1,11 @@
 const request = require('request')
 
-module.exports = function(url){
+module.exports = function(done, url){
    request(url, function (err, body) {
     if (err) {
-      throw err
+      done('Something went wrong!')
     } else {
-      console.log('body:', body);
-      process.stdout.write("\nprompt >")
+      done(body);
     }
   });
 }
