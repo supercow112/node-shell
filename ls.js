@@ -1,5 +1,3 @@
-
-
 // const ls = fs.readdir('./', 'utf8', (err, files) => {
 //   if (err) {
 //     throw err
